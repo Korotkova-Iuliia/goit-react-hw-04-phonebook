@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react';
-const LS_KEY = 'name_id';
-export default function useLocalStorage(LS_KEY, defaultValue) {
+export default function useLocalStorage(key, defaultValue) {
   const [state, setState] = useState(() => {
-    return JSON.parse(window.localStorage.getItem(LS_KEY)) ?? defaultValue;
+    return JSON.parse(window.localStorage.getItem(key)) ?? defaultValue;
   });
 
   useEffect(() => {
-    window.localStorage.setItem(LS_KEY, JSON.stringify(state));
-  }, [LS_KEY, state]);
+    window.localStorage.setItem(key, JSON.stringify(state));
+  }, [key, state]);
 
   return [state, setState];
 }

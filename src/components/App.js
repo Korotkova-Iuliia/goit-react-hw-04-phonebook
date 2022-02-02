@@ -10,30 +10,13 @@ import Section from './section/Section';
 import useLocalStorage from '../hooks/useLocalStorage';
 const LS_KEY = 'name_id';
 function App(defaultValue) {
-  const [contacts, setContacts] = useLocalStorage('contacts', [
+  const [contacts, setContacts] = useLocalStorage(LS_KEY, [
     { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
     { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
     { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
   ]);
   const [filter, setFilter] = useState('');
-  // const [contacts, setContacts] = useState(() => {
-  //   return JSON.parse(window.localStorage.getItem(LS_KEY)) ?? defaultValue;
-  // });
-
-  // useEffect(
-  //   LS_KEY => {
-  //     const savedState = JSON.parse(localStorage.getItem(LS_KEY));
-  //     if (savedState) {
-  //       setContacts(contacts);
-  //     }
-  //   },
-  //   [contacts],
-  // );
-
-  useEffect(() => {
-    // localStorage.setItem(LS_KEY, JSON.stringify(contacts));
-  }, [contacts]);
 
   const addContact = ({ name, number }) => {
     console.log(name, number);
@@ -53,9 +36,9 @@ function App(defaultValue) {
     // }));
   };
   const deleteContact = id => {
-    setContacts(({ contacts }) => ({
-      contacts: contacts.filter(contact => contact.id !== id),
-    }));
+    console.log(id);
+    console.log(contacts);
+    setContacts(contacts.filter(contact => contact.id !== id));
   };
   const changeFilter = e => {
     const { filter } = e.currentTarget.value.toLowerCase();

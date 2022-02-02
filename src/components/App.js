@@ -28,12 +28,6 @@ function App(defaultValue) {
     )
       ? alert(`Contact ${name} or number ${number}is already in contacts`)
       : setContacts(contacts => [...contacts, { id: nanoid(), name, number }]);
-    // setContacts(contacts => ({
-    //   contacts: [...contacts, { id: nanoid(), name, number }],
-    //   name,
-    //   number,
-    //   filter: '',
-    // }));
   };
   const deleteContact = id => {
     console.log(id);
@@ -41,7 +35,7 @@ function App(defaultValue) {
     setContacts(contacts.filter(contact => contact.id !== id));
   };
   const changeFilter = e => {
-    const { filter } = e.currentTarget.value.toLowerCase();
+    const filter = e.currentTarget.value.toLowerCase();
     setFilter(filter);
   };
   // const reset = () => {

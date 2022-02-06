@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import {
@@ -37,10 +38,6 @@ const FormError = ({ name }) => {
   );
 };
 const MyForm = ({ onSubmit }) => {
-  const change = e => {
-    const CustomInput = e.currentTarget.value;
-    console.log(CustomInput);
-  };
   const CustomInputComponent = props => <Input type="text" {...props} />;
   return (
     <Formik
@@ -80,3 +77,9 @@ const MyForm = ({ onSubmit }) => {
   );
 };
 export default MyForm;
+MyForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
+FormError.propTypes = {
+  name: PropTypes.string.isRequired,
+};
